@@ -18,17 +18,15 @@ const templates = {
   
   let currentImage = new Image();
   
-  // Load default template
   function loadTemplate(template) {
     const imagePath = templates[template];
     if (imagePath) {
-      currentImage.src = imagePath; // Ensure the path is correct
+      currentImage.src = imagePath;
     } else {
       alert('Template not found!');
     }
   }
   
-  // Generate the meme
   function generateMeme() {
     const topText = topTextInput.value.toUpperCase();
     const bottomText = bottomTextInput.value.toUpperCase();
@@ -39,42 +37,37 @@ const templates = {
     canvas.height = currentImage.height;
     ctx.drawImage(currentImage, 0, 0, canvas.width, canvas.height);
   
-    // Set text styles
     ctx.fillStyle = textColor;
     ctx.strokeStyle = strokeColor;
     ctx.lineWidth = 4;
     ctx.font = `${Math.floor(canvas.width / 12)}px Impact`;
     ctx.textAlign = 'center';
   
-    // Draw top text
     ctx.textBaseline = 'top';
     ctx.strokeText(topText, canvas.width / 2, 10);
     ctx.fillText(topText, canvas.width / 2, 10);
   
-    // Draw bottom text
     ctx.textBaseline = 'bottom';
     ctx.strokeText(bottomText, canvas.width / 2, canvas.height - 10);
     ctx.fillText(bottomText, canvas.width / 2, canvas.height - 10);
   
-    // Enable download button
     downloadLink.href = canvas.toDataURL('image/png');
     downloadButton.disabled = false;
     downloadButton.removeAttribute('disabled');
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    loadTemplate('drake'); // Default to the "Drake" template
+    loadTemplate('drake');
   });
   
   
-  // Event Listeners
   templateSelect.addEventListener('change', () => {
     const selectedTemplate = templateSelect.value;
     if (selectedTemplate === 'custom') {
-      imageUpload.style.display = 'inline'; // Show file upload input
+      imageUpload.style.display = 'inline';
     } else {
-      imageUpload.style.display = 'none'; // Hide file upload input
-      loadTemplate(selectedTemplate); // Load selected template
+      imageUpload.style.display = 'none';
+      loadTemplate(selectedTemplate);
     }
   });
   
