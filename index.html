@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Meme Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 Meme Generator 🔥</h1>
+    <div class="controls">
+      <label for="templateSelect">Choose a Template:</label>
+      <select id="templateSelect">
+        <option value="drake">Drake</option>
+        <option value="boyfriend">Distracted Boyfriend</option>
+        <option value="doge">Doge</option>
+        <option value="custom">Upload Your Own</option>
+      </select>
+      <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+      <input type="text" id="topText" placeholder="Top Text">
+      <input type="text" id="bottomText" placeholder="Bottom Text">
+      <label for="textColor">Text Color:</label>
+      <input type="color" id="textColor" value="#FFFFFF">
+      <label for="strokeColor">Outline Color:</label>
+      <input type="color" id="strokeColor" value="#000000">
+      <button id="generateButton">Generate Meme</button>
+    </div>
+    <div class="canvas-container">
+      <canvas id="memeCanvas"></canvas>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
